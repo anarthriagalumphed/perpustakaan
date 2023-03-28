@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 
 Route::get('/buku', [BookController::class, 'index'])->name('buku');
+Route::get('/addbuku', [BookController::class, 'addbuku'])->name('addbuku');
+Route::post('/insertdata', [BookController::class, 'insertdata'])->name('insertdata');

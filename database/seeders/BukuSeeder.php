@@ -15,9 +15,9 @@ class BukuSeeder extends Seeder
     {
         DB::table('books')->insert([
             'judul' => 'bumi',
-            'pengarang' => 'galih',
+            'penulis' => 'galih',
             'penerbit' => 'galihmahendrasejahtera',
-            'tahun_terbit' => '2023',
+            'tahun_terbit' => '2023/07/22',
             'jumlah_halaman' => '6666',
             'sinopsis' => 'pokoknya bagus banget deh'
 

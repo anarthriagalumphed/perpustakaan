@@ -14,4 +14,17 @@ class BookController extends Controller
 
         return view('databuku', compact('data'));
     }
+
+    public function addbuku()
+    {
+        return view('addata');
+    }
+
+
+    public function insertdata(Request $request)
+    {
+        // dd($request->all());
+        Book::create($request->all());
+        return redirect()->route('buku');
+    }
 }
