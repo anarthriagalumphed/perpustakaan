@@ -17,7 +17,7 @@
     <h1 class="text-center mb-4">Buku</h1>
 
     <div class="container">
-        <button type="button" class="btn btn-success">add</button>
+        <a href="/addbuku" type="button" class="btn btn-success">add</a>
         <div class="row">
             <table class="table">
                 <thead>
@@ -38,7 +38,7 @@
                             <td>{{ $row->judul }}</td>
                             <td>{{ $row->penulis }}</td>
                             <td>{{ $row->penerbit }}</td>
-                            <td>{{ $row->tahun_terbit }}</td>
+                            <td>{{ date(' Y', strtotime($row->tahun_terbit)) }}</td>
                             <td>{{ $row->jumlah_halaman }}</td>
                             <td>{{ $row->sinopsis }}</td>
                             <td>

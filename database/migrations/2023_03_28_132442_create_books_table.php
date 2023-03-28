@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('pengarang');
             $table->string('penerbit');
-            $table->integer('tahun_terbit');
+            $table->date('tahun_terbit');
             $table->integer('jumlah_halaman');
             $table->text('sinopsis');
 
