@@ -25,6 +25,6 @@ class BookController extends Controller
     {
         // dd($request->all());
         Book::create($request->all());
-        return redirect()->route('buku');
+        return redirect()->route('buku')->with('sukses', 'data berhasil ditambahkan');;
     }
 }

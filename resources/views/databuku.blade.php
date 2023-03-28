@@ -19,6 +19,11 @@
     <div class="container">
         <a href="/addbuku" type="button" class="btn btn-success">add</a>
         <div class="row">
+            @if ($message = Session::get('sukses'))
+                <div class="alert alert-success" role="alert">
+                    {{ $message }}
+                </div>
+            @endif
             <table class="table">
                 <thead>
                     <tr>
