@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-5/ZcxA7Dub2FNG09dHw8CHmPN7Fz6ASlweagj0nuXjmMyupgH9n9F5Hd926zsu3/" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ asset('img/icon.ico') }}">
 
     <title>Perpustakaan</title>
 </head>
@@ -40,12 +41,12 @@
                     @foreach ($data as $row)
                         <tr>
                             <th scope="row">{{ $row->id }}</th>
-                            <td>{{ $row->judul }}</td>
-                            <td>{{ $row->penulis }}</td>
-                            <td>{{ $row->penerbit }}</td>
-                            <td>{{ date(' Y', strtotime($row->tahun_terbit)) }}</td>
-                            <td>{{ $row->jumlah_halaman }}</td>
-                            <td>{{ $row->sinopsis }}</td>
+                            <td>{{ $row->title }}</td>
+                            <td>{{ $row->writer }}</td>
+                            <td>{{ $row->publisher }}</td>
+                            <td>{{ date(' Y', strtotime($row->publication_year)) }}</td>
+                            <td>{{ $row->number_of_pages }}</td>
+                            <td>{{ $row->summary }}</td>
                             <td>
                                 <button type="button" class="btn btn-warning">edit</button>
                                 <button type="button" class="btn btn-danger">delete</button>
@@ -77,4 +78,4 @@
     -->
 </body>
 
-</html> --}}
+</html>

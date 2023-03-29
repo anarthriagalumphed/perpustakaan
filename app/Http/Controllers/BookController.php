@@ -10,21 +10,16 @@ class BookController extends Controller
 {
     public function index()
     {
-        $data = Book::all();
-
-        return view('databuku', compact('data'));
-    }
-
-    public function addbuku()
-    {
-        return view('addata');
+        dd('ini halaman buku');
     }
 
 
-    public function insertdata(Request $request)
-    {
-        // dd($request->all());
-        Book::create($request->all());
-        return redirect()->route('buku')->with('sukses', 'data berhasil ditambahkan');;
-    }
+
+
+
+    // flush data login
+    // public function index(Request $request)
+    // {
+    //     $request->session()->flush();
+    // }
 }
