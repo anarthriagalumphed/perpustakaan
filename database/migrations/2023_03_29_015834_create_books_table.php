@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('book_code');
             $table->string('title');
+            $table->string('writer');
+            $table->string('publisher');
+            $table->date('publication_year');
+            $table->integer('number_of_pages');
+            $table->text('sinopsis');
             $table->string('status')->default('in stock');
             $table->timestamps();
         });

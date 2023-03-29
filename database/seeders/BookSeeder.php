@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class BukuSeeder extends Seeder
+class BookSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,12 @@ class BukuSeeder extends Seeder
     public function run(): void
     {
         DB::table('books')->insert([
-            'judul' => 'bumi',
-            'penulis' => 'galih',
-            'penerbit' => 'galihmahendrasejahtera',
-            'tahun_terbit' => '2023/07/22',
-            'jumlah_halaman' => '6666',
+            'book_code' => '1',
+            'title' => 'bumi',
+            'writer' => 'galih',
+            'publisher' => 'galihmahendrasejahtera',
+            'publication_year' => '2023/07/22',
+            'number_of_pages' => '6666',
             'sinopsis' => 'pokoknya bagus banget deh'
 
         ]);
