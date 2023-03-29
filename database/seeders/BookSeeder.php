@@ -20,7 +20,7 @@ class BookSeeder extends Seeder
             'publisher' => 'galihmahendrasejahtera',
             'publication_year' => '2023/07/22',
             'number_of_pages' => '6666',
-            'sinopsis' => 'pokoknya bagus banget deh'
+            'summary' => 'pokoknya bagus banget deh'
 
         ]);
     }
