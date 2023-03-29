@@ -44,7 +44,7 @@
                 </div>
                 <div>
                     <label for="password" class="form-label">Password</label>
-                    <input type="text" name="password" id="password" class="form-control" required>
+                    <input type="password" name="password" id="password" class="form-control" required>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary form-control">Login</button>
