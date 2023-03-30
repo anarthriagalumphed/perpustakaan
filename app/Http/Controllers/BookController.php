@@ -10,7 +10,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        dd('ini halaman buku');
+        // dd('ini halaman buku');
+        return view('books');
     }
 
 
