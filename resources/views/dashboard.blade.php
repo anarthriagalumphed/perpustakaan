@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.mainlayout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-</head>
+@section('title', 'Dashboard')
 
-<body>
-    <h1>ini halaman dashboard admin</h1>
-</body>
 
-</html>
+@section('content')
+
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A hic exercitationem veniam pariatur? Recusandae deserunt
+        sapiente perspiciatis temporibus, fuga voluptate quibusdam odit ut pariatur ducimus consectetur voluptatum, tempore
+        culpa fugit quas officia provident laboriosam repellat neque! Nobis in maxime, ratione corporis et similique
+        accusamus quod ab aut provident praesentium molestias nam consectetur minus, aliquam dolore ipsum eligendi deserunt
+        officiis unde quam, itaque hic? Illo assumenda quis perspiciatis, ipsa dolorum error voluptate sint voluptatem iusto
+        consequatur, dolores, commodi laboriosam quas nulla veritatis quisquam nostrum autem saepe est eligendi accusantium
+        ullam placeat illum quos. Molestias quisquam neque quaerat hic quam. Asperiores, doloremque.
+    </p>
+
+@endsection
