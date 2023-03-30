@@ -31,8 +31,8 @@
     </style>
     <div class="main d-flex flex-column  justify-content-center align-items-center">
         @if (session('status'))
-            <div class="alert alert-danger">
-                {{ session('message') }}
+            <div class="alert alert-danger" style="width: 500px">
+                <li>{{ session('message') }}</li>
             </div>
         @endif
         <div class="login-box">
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-primary form-control">Login</button>
                 </div>
                 <div class="text-center">
-                    <a href="register">Sign Up</a>
+                    Dont Have Account? <a href="register">Sign Up</a>
                 </div>
             </form>
         </div>
