@@ -4,7 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Rent_LogsController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,24 +29,25 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
-// Route::get('/buku', [BookController::class, 'index'])->name('buku');
-// Route::get('/addbuku', [BookController::class, 'addbuku'])->name('addbuku');
-// Route::post('/insertdata', [BookController::class, 'insertdata'])->name('insertdata');
-
-
-
-
 Route::middleware('only_guest')->group(function () {
-    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::get('login', [LoginController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'authenticating']);
-    Route::get('register', [AuthController::class, 'register']);
-    Route::post('register', [AuthController::class, 'registerProcess']);
+    // Route::post('login', [LoginController::class, 'loginProcess']);
+    // Route::post('login', [LoginController::class, 'username']);
+    // Route::post('login', [LoginController::class, 'loginProcess'])->name('loginProcess');
+    Route::get('register', [RegisterController::class, 'register']);
+    Route::post('register', [RegisterController::class, 'registerProcess']);
 });
+
+
 Route::middleware('auth')->group(function () {
-    Route::get('logout', [AuthController::class, 'logout']);
-    Route::get('dashboard', [DashboardController::class, 'index'])->middleware('only_admin');
-    Route::get('profile', [UserController::class, 'profile']);
-    Route::get('books', [BookController::class, 'index']);
+    Route::get('logout', [LogoutController::class, 'logout']);
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->middleware('only_admin');
+    Route::get('profile', [ProfileController::class, 'profile']);
+    Route::get('books', [BookController::class, 'books']);
+    Route::get('categories', [CategoriesController::class, 'categories'])->middleware('only_admin');
+    Route::get('users', [UsersController::class, 'users'])->middleware('only_admin');
+    Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs'])->middleware('only_admin');
 });
 
 

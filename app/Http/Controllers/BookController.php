@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
-    public function index()
+    public function books()
     {
         // dd('ini halaman buku');
         return view('books');

@@ -54,17 +54,22 @@
                     <input type="text" name="username" id="username" class="form-control">
                 </div>
                 <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+
+                <div>
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
-                <div>
+                {{-- <div>
                     <label for="phone" class="form-label">phone</label>
                     <input type="number" name="phone" id="phone" class="form-control">
-                </div>
-                <div>
+                </div> --}}
+                {{-- <div>
                     <label for="address" class="form-label">address</label>
                     <textarea type="address" name="address" id="address" class="form-control" rows="3"></textarea>
-                </div>
+                </div> --}}
                 <div>
                     <button type="submit" class="btn btn-primary form-control">Register</button>
                 </div>

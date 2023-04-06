@@ -39,8 +39,20 @@
             <form action="" method="post">
                 @csrf
                 <div>
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" required>
+                    <label for="username" class="form-label">Username or Email Address</label>
+                    <input type="text" name="username" id="username" class="form-control"
+                        value="{{ old('username') }}" required autofocus>
+                    {{-- <label for="username_or_email" class="form-label">username_or_email or Email Address</label>
+                    <input type="text" name="username_or_email" id="username_or_email" class="form-control"
+                        value="{{ old('username_or_email') }}" required autofocus> --}}
+
+
+                    {{-- @error('username')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+
+                        </span>
+                    @enderror --}}
                 </div>
                 <div>
                     <label for="password" class="form-label">Password</label>
@@ -54,6 +66,7 @@
                 </div>
             </form>
         </div>
+
     </div>
 
 
