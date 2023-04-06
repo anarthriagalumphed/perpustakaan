@@ -31,7 +31,7 @@ class RegisterController extends Controller
 
         Session::flash('status', 'success');
         Session::flash('message', 'register success');
-        return redirect('register');
+        return redirect('login');
 
 
         // dd($request->password);
