@@ -26,11 +26,11 @@ class AuthController extends Controller
         if (Auth::attempt([$fieldType => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/profile');
         }
 
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
+            'login_failed' => 'Username,Email Address or Password is incorrect.',
         ]);
 
 
@@ -68,33 +68,8 @@ class AuthController extends Controller
 
 
 
-        Session::flash('status', 'failed');
-        Session::flash('message', 'Login Invalid');
-        return redirect('/login');
+        // Session::flash('status', 'failed');
+        // Session::flash('message', 'Login Invalid');
+        // return redirect('/login');
     }
-
-
-
-
-
-
-
-
-
-    // protected function attemptLogin(Request $request)
-    // {
-    //     $email = $request->input('email');
-    //     $password = $request->input('password');
-    //     $username = $request->input('username');
-
-    //     $credentials = $request->only('password');
-
-    //     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //         $credentials['email'] = $email;
-    //     } else {
-    //         $credentials['username'] = $username;
-    //     }
-
-    //     return Auth::attempt($credentials, $request->filled('remember'));
-    // }
 }

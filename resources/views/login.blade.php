@@ -30,9 +30,14 @@
         }
     </style>
     <div class="main d-flex flex-column  justify-content-center align-items-center">
-        @if (session('status'))
+        {{-- @if (session('status'))
             <div class="alert alert-danger" style="width: 500px">
                 <li>{{ session('message') }}</li>
+            </div>
+        @endif --}}
+
+        @if ($errors->has('login_failed'))
+            <div class="alert alert-danger " role="alert" style="width: 500px">{{ $errors->first('login_failed') }}
             </div>
         @endif
         <div class="login-box">
@@ -42,17 +47,9 @@
                     <label for="username" class="form-label">Username or Email Address</label>
                     <input type="text" name="username" id="username" class="form-control"
                         value="{{ old('username') }}" required autofocus>
-                    {{-- <label for="username_or_email" class="form-label">username_or_email or Email Address</label>
-                    <input type="text" name="username_or_email" id="username_or_email" class="form-control"
-                        value="{{ old('username_or_email') }}" required autofocus> --}}
 
 
-                    {{-- @error('username')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
 
-                        </span>
-                    @enderror --}}
                 </div>
                 <div>
                     <label for="password" class="form-label">Password</label>
