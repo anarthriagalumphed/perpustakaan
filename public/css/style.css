@@ -1,0 +1,35 @@
+/* .body {
+    text-align: justify;
+} */
+
+/* .col-12 {
+
+    padding: 10px;
+} */
+
+/* .text-center {
+    text-align: center;
+} */
+
+.badge {
+    font-size: 0.8rem;
+}
+
+.main-footer {
+    height: 50px;
+}
+
+.brand-link {
+    text-decoration: none !important;
+
+    /* pointer-events: none; */
+}
+
+.info a {
+    text-decoration: none;
+}
+
+
+
+
+  

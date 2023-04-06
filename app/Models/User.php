@@ -20,8 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'phone',
-        'address',
+        'email',
+
     ];
 
     /**
@@ -45,6 +45,16 @@ class User extends Authenticatable
 
     protected $attributes = [
         'role_id' => 2,
+
         // jika ingin menambah isi disini
     ];
+
+
+
+    public static function findByUsernameOrEmail($usernameOrEmail)
+    {
+        return self::where('username', $usernameOrEmail)
+            ->oerWhere('email', $usernameOrEmail)
+            ->rist();
+    }
 }

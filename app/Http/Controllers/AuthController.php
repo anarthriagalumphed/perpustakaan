@@ -6,31 +6,34 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
-        return view('login');
-    }
-
-    public function register()
-    {
-        return view('register');
-    }
-
-
 
     public function authenticating(Request $request)
     {
         // dd('auth');
         $credentials = $request->validate([
+            // 'email' => ['required|email|regex:/^.+@.+$/i'],
             'username' => ['required'],
             'password' => ['required'],
         ]);
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::attempt([$fieldType => $request->username, 'password' => $request->password])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
+        }
+
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ]);
+
+
 
         // cek login falid
         // cek user status aktif?
@@ -43,9 +46,9 @@ class AuthController extends Controller
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
                 // return redirect('login')->with('status', 'Your account inactive please contact admin');
-                Session::flash('status', 'failed');
-                Session::flash('message', 'Your account inactive please contact admin');
-                return redirect('/login');
+                // Session::flash('status', 'failed');
+                // Session::flash('message', 'Your account inactive please contact admin');
+                // return redirect('/login');
             }
 
             // untuk meregenerate status
@@ -60,38 +63,38 @@ class AuthController extends Controller
             }
             // return redirect('')->intendeed('dashboard');
         }
+
+
+
+
+
         Session::flash('status', 'failed');
         Session::flash('message', 'Login Invalid');
         return redirect('/login');
     }
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/login');
-    }
 
 
-    public function registerProcess(Request $request)
-    {
-        $validated = $request->validate([
-            'username' => 'required|unique:users|max:255',
-            'password' => 'required|unique:users|max:255',
-            'phone' => 'max:12',
-            'address' => 'required',
-
-        ]);
-
-        $request['password'] = Hash::make($request['password']);
-
-        $user = User::create($request->all());
-
-        Session::flash('status', 'success');
-        Session::flash('message', 'register success');
-        return redirect('register');
 
 
-        // dd($request->password);
-    }
+
+
+
+
+
+    // protected function attemptLogin(Request $request)
+    // {
+    //     $email = $request->input('email');
+    //     $password = $request->input('password');
+    //     $username = $request->input('username');
+
+    //     $credentials = $request->only('password');
+
+    //     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    //         $credentials['email'] = $email;
+    //     } else {
+    //         $credentials['username'] = $username;
+    //     }
+
+    //     return Auth::attempt($credentials, $request->filled('remember'));
+    // }
 }
