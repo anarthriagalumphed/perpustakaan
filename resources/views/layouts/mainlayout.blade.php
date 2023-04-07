@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
     <link
         href="{{ asset('template/https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-                                                                                                                integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
+                                                                                                                                                                                                                        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -118,8 +118,8 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                         @if (Auth::user()->role_id == 1)
-                            <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
-                                <a href="dashboard" class="nav-link">
+                            <li class="nav-item">
+                                <a href="/dashboard" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Dashboard
@@ -128,8 +128,8 @@
                                 </a>
                             </li>
                             {{-- <li class="nav-header">EXAMPLES</li> --}}
-                            <li class="nav-item ">
-                                <a href="books" class="nav-link">
+                            <li class="nav-item">
+                                <a href="/books" class="nav-link {{ request()->is('books') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-swatchbook "></i>
                                     <p>
                                         Books
@@ -137,7 +137,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="categories" class="nav-link">
+                                <a href="/categories"
+                                    class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
                                     <i class="nav-icon  	fas fa-book "></i>
                                     <p>
                                         Categories
@@ -145,7 +146,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="users" class="nav-link">
+                                <a href="/users" class="nav-link {{ request()->is('users') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-users "></i>
                                     <p>
                                         Users
@@ -153,7 +154,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="rent_logs" class="nav-link">
+                                <a href="/rent_logs" class="nav-link {{ request()->is('rent_logs') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-business-time "></i>
                                     <p>
                                         Rent Logs
@@ -161,7 +162,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="logout" class="nav-link">
+                                <a href="/logout" class="nav-link ">
                                     <i class="nav-icon fas fa-sign-out-alt "></i>
                                     <p>
                                         Logout
@@ -170,7 +171,7 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a href="logout" class="nav-link">
+                                <a href="/logout" class="nav-link">
                                     <i class="nav-icon fas fa-sign-out-alt "></i>
                                     <p>
                                         Logout
@@ -257,7 +258,7 @@
                     href="mailto:galihmahendrastudio.mp@gmail.com">galihmahendrastudio.co</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                {{-- <b>Version</b> 3.2.0 --}}
             </div>
         </footer>
     </div>
