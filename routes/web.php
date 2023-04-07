@@ -32,9 +32,6 @@ Route::get('/', function () {
 Route::middleware('only_guest')->group(function () {
     Route::get('login', [LoginController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'authenticating']);
-    // Route::post('login', [LoginController::class, 'loginProcess']);
-    // Route::post('login', [LoginController::class, 'username']);
-    // Route::post('login', [LoginController::class, 'loginProcess'])->name('loginProcess');
     Route::get('register', [RegisterController::class, 'register']);
     Route::post('register', [RegisterController::class, 'registerProcess']);
 });
@@ -45,7 +42,23 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->middleware('only_admin');
     Route::get('profile', [ProfileController::class, 'profile']);
     Route::get('books', [BookController::class, 'books']);
+    Route::get('add_books', [BookController::class, 'add_books'])->middleware('only_admin');
+    Route::post('add_books', [BookController::class, 'store'])->middleware('only_admin');
+    Route::get('edit_books/{slug}', [BookController::class, 'edit_books'])->middleware('only_admin');
+    Route::post('edit_books/{slug}', [BookController::class, 'update_books'])->middleware('only_admin');
+    Route::get('delete_books/{slug}', [BookController::class, 'delete_books'])->middleware('only_admin');
+    Route::get('destroy_books/{slug}', [BookController::class, 'destroy_books'])->middleware('only_admin');
+    Route::get('deleted_books', [BookController::class, 'deleted_books'])->middleware('only_admin');
+    Route::get('restore_books/{slug}', [BookController::class, 'restore_books'])->middleware('only_admin');
     Route::get('categories', [CategoriesController::class, 'categories'])->middleware('only_admin');
+    Route::get('add_category', [CategoriesController::class, 'add_category'])->middleware('only_admin');
+    Route::get('edit_category/{slug}', [CategoriesController::class, 'edit_category'])->middleware('only_admin');
+    Route::put('edit_category/{slug}', [CategoriesController::class, 'update_category'])->middleware('only_admin');
+    Route::get('delete_category/{slug}', [CategoriesController::class, 'delete_category'])->middleware('only_admin');
+    Route::get('destroy_category/{slug}', [CategoriesController::class, 'destroy_category'])->middleware('only_admin');
+    Route::get('deleted_category', [CategoriesController::class, 'deleted_category'])->middleware('only_admin');
+    Route::get('restore_category/{slug}', [CategoriesController::class, 'restore_category'])->middleware('only_admin');
+    Route::post('add_category', [CategoriesController::class, 'store'])->middleware('only_admin');
     Route::get('users', [UsersController::class, 'users'])->middleware('only_admin');
     Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs'])->middleware('only_admin');
 });

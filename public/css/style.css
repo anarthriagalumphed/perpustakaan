@@ -29,7 +29,15 @@
     text-decoration: none;
 }
 
+a.card-title{
+    text-decoration: none;
+    color: #fff;
+}
 
-
-
+a.card-title:hover {
+    color: blue !important;
+  } 
   
+
+
+

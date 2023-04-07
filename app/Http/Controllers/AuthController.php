@@ -24,9 +24,20 @@ class AuthController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         if (Auth::attempt([$fieldType => $request->username, 'password' => $request->password])) {
-            $request->session()->regenerate();
 
-            return redirect()->intended('/profile');
+
+
+
+
+            $request->session()->regenerate();
+            // dd(Auth::user());
+            if (Auth::user()->role_id == 1) {
+                return redirect('dashboard');
+            }
+
+            if (Auth::user()->role_id == 2) {
+                return redirect('profile');
+            }
         }
 
         return back()->withErrors([
@@ -37,32 +48,30 @@ class AuthController extends Controller
 
         // cek login falid
         // cek user status aktif?
-        if (Auth::attempt($credentials)) {
-            // cek user status aktif?
-            if (Auth::user()->status != 'active') {
-                // fungsi ini digunakan untuk me logout walaupun sudah register
+        // if (Auth::attempt($credentials)) {
+        //     // cek user status aktif?
+        //     // if (Auth::user()->status != 'active') {
+        //     //     // fungsi ini digunakan untuk me logout walaupun sudah register
 
-                Auth::logout();
-                $request->session()->invalidate();
-                $request->session()->regenerateToken();
-                // return redirect('login')->with('status', 'Your account inactive please contact admin');
-                // Session::flash('status', 'failed');
-                // Session::flash('message', 'Your account inactive please contact admin');
-                // return redirect('/login');
-            }
 
-            // untuk meregenerate status
-            $request->session()->regenerate();
-            // dd(Auth::user());
-            if (Auth::user()->role_id == 1) {
-                return redirect('dashboard');
-            }
+        //     //     // return redirect('login')->with('status', 'Your account inactive please contact admin');
+        //     //     // Session::flash('status', 'failed');
+        //     //     // Session::flash('message', 'Your account inactive please contact admin');
+        //     //     // return redirect('/login');
+        //     // }
 
-            if (Auth::user()->role_id == 2) {
-                return redirect('profile');
-            }
-            // return redirect('')->intendeed('dashboard');
-        }
+        //     // untuk meregenerate status
+        //     // $request->session()->regenerate();
+        //     // // dd(Auth::user());
+        //     // if (Auth::user()->role_id == 1) {
+        //     //     return redirect('dashboard');
+        //     // }
+
+        //     // if (Auth::user()->role_id == 2) {
+        //     //     return redirect('profile');
+        //     // }
+        //     // return redirect('')->intendeed('dashboard');
+        // }
 
 
 
