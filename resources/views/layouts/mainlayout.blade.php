@@ -129,7 +129,7 @@
                             </li>
                             {{-- <li class="nav-header">EXAMPLES</li> --}}
                             <li class="nav-item">
-                                <a href="/books" class="nav-link {{ request()->is('books') ? 'active' : '' }}">
+                                <a href="/books" class="nav-link {{ request()->is('books') ? 'active' : '' }} || {{ request()->is('add_books') ? 'active' : '' }} || {{ request()->is('edit_books') ? 'active' : '' }} || {{ request()->is('delete_books') ? 'active' : '' }} || {{ request()->is('deleted_books') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-swatchbook "></i>
                                     <p>
                                         Books
@@ -138,7 +138,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="/categories"
-                                    class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
+                                    class="nav-link {{ request()->is('categories') ? 'active' : '' }} || {{ request()->is('add_category') ? 'active' : '' }} || {{ request()->is('edit_category') ? 'active' : '' }} || {{ request()->is('delete_category') ? 'active' : '' }} || {{ request()->is('deleted_category') ? 'active' : '' }}">
                                     <i class="nav-icon  	fas fa-book "></i>
                                     <p>
                                         Categories

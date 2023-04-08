@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Users')
+@section('title', 'Banned Users')
 
 
 @section('content')
@@ -32,18 +32,19 @@
                     </div>
                 </div>
                 <br>
-                <a href="/deleted_users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class=""></i>
-                    Banned</a>
-                {{-- <a href="/registered_users" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
+                <a href="/categories" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
+                        class="fas fa-arrow-left"></i>
+                    Back</a>
+                {{-- <a href="deleted_category" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
                         class="fas fa-history"></i>
-                    View Registered
-                    User</a> --}}
+                    View Deleted
+                    Data</a> --}}
                 <br>
                 <tr>
                     <th>No.</th>
                     <th>Username</th>
                     <th>Phone</th>
+
 
                 </tr>
 
@@ -51,25 +52,15 @@
 
                 <!-- ini perlu diganti -->
                 <tbody>
-                    @foreach ($users as $item)
+                    @foreach ($deletedUsers as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->username }}</td>
+                            <td>{{ $item->phone }}</td>
                             <td>
-                                @if ($item->phone)
-                                    {{ $item->phone }}
-                                @else
-                                    -
-                                @endif
+                                <a href="restore_users/{{ $item->slug }}" class="btn btn-success btn-sm"><i
+                                        class="fas fa-trash-restore"></i></a>
 
-
-
-                            </td>
-                            <td>
-                                <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
-                                        class="	fas fa-address-card"></i></a>
-                                <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
 
                             </td>
                         </tr>
