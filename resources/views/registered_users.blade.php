@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Users')
+@section('title', 'Registered Users')
 
 
 @section('content')
@@ -32,9 +32,8 @@
                     </div>
                 </div>
                 <br>
-                <a href="/deleted_users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class=""></i>
-                    Banned</a>
+                <a href="/users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i class=""></i>
+                    Users</a>
                 {{-- <a href="/registered_users" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
                         class="fas fa-history"></i>
                     View Registered
@@ -51,7 +50,7 @@
 
                 <!-- ini perlu diganti -->
                 <tbody>
-                    @foreach ($users as $item)
+                    @foreach ($registeredUsers as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->username }}</td>
@@ -68,8 +67,8 @@
                             <td>
                                 <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
                                         class="	fas fa-address-card"></i></a>
-                                <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                {{-- <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
+                                        class="fas fa-trash"></i></a> --}}
 
                             </td>
                         </tr>

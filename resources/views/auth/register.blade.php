@@ -28,6 +28,16 @@
         form div {
             margin: 15px;
         }
+
+        body{
+            background-color: #454d55;
+        }
+
+        .register-box {
+            background-color: #343a40;
+    color: #fff;
+}
+
     </style>
     <div class="main d-flex flex-column  justify-content-center align-items-center">
         @if ($errors->any())

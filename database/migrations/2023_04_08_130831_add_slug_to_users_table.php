@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->softDeletes()->after('updated_at');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('slug', 255)->nullable()->after('username');
         });
     }
 
@@ -21,8 +21,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropSoftDeletes();
+        Schema::table('users', function (Blueprint $table) {
+            if (Schema::hasColumn('users', 'slug')) {
+                $table->dropColumn('slug');
+            }
         });
     }
 };
