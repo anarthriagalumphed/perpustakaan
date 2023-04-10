@@ -129,5 +129,6 @@ class BookController extends Controller
         $book = Book::withTrashed()->where('slug', $slug)->first();
         $book->restore();
         return redirect('books')->with('status', 'book restored');
+
     }
 }
