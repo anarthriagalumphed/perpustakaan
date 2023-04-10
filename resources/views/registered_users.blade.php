@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Books')
+@section('title', 'Registered Users')
 
 
 @section('content')
@@ -32,21 +32,17 @@
                     </div>
                 </div>
                 <br>
-                <a href="add_books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class="fas fa-plus"></i>
-                    Tambah
-                    Books</a>
-                <a href="deleted_books" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
+                <a href="/users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i class=""></i>
+                    Users</a>
+                {{-- <a href="/registered_users" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
                         class="fas fa-history"></i>
-                    View Deleted
-                    Data</a>
+                    View Registered
+                    User</a> --}}
                 <br>
                 <tr>
                     <th>No.</th>
-                    <th>Code</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Status</th>
+                    <th>Username</th>
+                    <th>Phone</th>
 
                 </tr>
 
@@ -54,31 +50,34 @@
 
                 <!-- ini perlu diganti -->
                 <tbody>
-                    @foreach ($books as $item)
+                    @foreach ($registeredUsers as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->book_code }}</td>
-                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->username }}</td>
                             <td>
-                                @foreach ($item->categories as $category)
-                                    {{ $category->name }}<br>
-                                @endforeach
+                                @if ($item->phone)
+                                    {{ $item->phone }}
+                                @else
+                                    -
+                                @endif
+
+
+
                             </td>
-                            <td>{{ $item->status }}</td>
                             <td>
-                                <a href="/edit_books/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
-                                        class="fas fa-edit"></i></a>
-                                <a href="/delete_books/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
+                                        class="	fas fa-address-card"></i></a>
+                                {{-- <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
+                                        class="fas fa-trash"></i></a> --}}
 
                             </td>
                         </tr>
                     @endforeach
+
                 </tbody>
 
             </table>
         </div>
     </div>
-
 
 @endsection

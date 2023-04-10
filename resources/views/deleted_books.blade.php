@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Books')
+@section('title', 'Deleted Books')
 
 
 @section('content')
@@ -32,21 +32,18 @@
                     </div>
                 </div>
                 <br>
-                <a href="add_books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class="fas fa-plus"></i>
-                    Tambah
-                    Books</a>
-                <a href="deleted_books" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
+                <a href="/books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
+                        class="fas fa-arrow-left"></i>
+                    Back</a>
+                {{-- <a href="deleted_category" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
                         class="fas fa-history"></i>
                     View Deleted
-                    Data</a>
+                    Data</a> --}}
                 <br>
                 <tr>
                     <th>No.</th>
                     <th>Code</th>
                     <th>Title</th>
-                    <th>Category</th>
-                    <th>Status</th>
 
                 </tr>
 
@@ -54,31 +51,23 @@
 
                 <!-- ini perlu diganti -->
                 <tbody>
-                    @foreach ($books as $item)
+                    @foreach ($deletedBooks as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->book_code }}</td>
-                            <td>{{ $item->title }}</td>
                             <td>
-                                @foreach ($item->categories as $category)
-                                    {{ $category->name }}<br>
-                                @endforeach
-                            </td>
-                            <td>{{ $item->status }}</td>
-                            <td>
-                                <a href="/edit_books/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
-                                        class="fas fa-edit"></i></a>
-                                <a href="/delete_books/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="restore_books/{{ $item->slug }}" class="btn btn-success btn-sm"><i
+                                        class="fas fa-trash-restore"></i></a>
+
 
                             </td>
                         </tr>
                     @endforeach
+
                 </tbody>
 
             </table>
         </div>
     </div>
-
 
 @endsection

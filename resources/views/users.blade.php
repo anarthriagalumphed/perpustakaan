@@ -1,19 +1,82 @@
 @extends('layouts.mainlayout')
 
-
 @section('title', 'Users')
 
 
 @section('content')
 
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    <div class="card">
+        <div class="card-header">
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A hic exercitationem veniam pariatur? Recusandae deserunt
-        sapiente perspiciatis temporibus, fuga voluptate quibusdam odit ut pariatur ducimus consectetur voluptatum, tempore
-        culpa fugit quas officia provident laboriosam repellat neque! Nobis in maxime, ratione corporis et similique
-        accusamus quod ab aut provident praesentium molestias nam consectetur minus, aliquam dolore ipsum eligendi deserunt
-        officiis unde quam, itaque hic? Illo assumenda quis perspiciatis, ipsa dolorum error voluptate sint voluptatem iusto
-        consequatur, dolores, commodi laboriosam quas nulla veritatis quisquam nostrum autem saepe est eligendi accusantium
-        ullam placeat illum quos. Molestias quisquam neque quaerat hic quam. Asperiores, doloremque.
-    </p>
+            <h3 class="card-title">@yield('title')</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <a href="/deleted_users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
+                        class=""></i>
+                    Banned</a>
+                {{-- <a href="/registered_users" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
+                        class="fas fa-history"></i>
+                    View Registered
+                    User</a> --}}
+                <br>
+                <tr>
+                    <th>No.</th>
+                    <th>Username</th>
+                    <th>Phone</th>
+
+                </tr>
+
+                <!-- ini perlu diganti data => isi -->
+
+                <!-- ini perlu diganti -->
+                <tbody>
+                    @foreach ($users as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>
+                                @if ($item->phone)
+                                    {{ $item->phone }}
+                                @else
+                                    -
+                                @endif
+
+
+
+                            </td>
+                            <td>
+                                <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
+                                        class="	fas fa-address-card"></i></a>
+                                <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
+                                        class="fas fa-trash"></i></a>
+
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 
 @endsection
