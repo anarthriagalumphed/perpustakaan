@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::get('deleted_users', [UsersController::class, 'deleted_users'])->middleware('only_admin');
     Route::get('restore_users/{slug}', [UsersController::class, 'restore_users'])->middleware('only_admin');
 
-    
+
     Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs'])->middleware('only_admin');
 });
 
