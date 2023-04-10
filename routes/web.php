@@ -78,7 +78,6 @@ Route::middleware('auth')->group(function () {
 
     
     Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs'])->middleware('only_admin');
-    Route::get('detail_logs', [Rent_LogsController::class, 'detail_logs'])->middleware('only_admin');
 });
 
 
