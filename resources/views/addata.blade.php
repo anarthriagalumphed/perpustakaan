@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-5/ZcxA7Dub2FNG09dHw8CHmPN7Fz6ASlweagj0nuXjmMyupgH9n9F5Hd926zsu3/" crossorigin="anonymous">
-
+    <link rel="shortcut icon" href="{{ asset('img/icon.ico') }}">
     <title>Perpustakaan</title>
 </head>
 
@@ -26,37 +26,37 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">judul</label>
-                                <input type="text" name="judul" class="form-control" id="exampleInputEmail1"
+                                <input type="text" name="title" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">penulis</label>
-                                <input type="text" name="penulis" class="form-control" id="exampleInputEmail1"
+                                <input type="text" name="writer" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">penerbit</label>
-                                <input type="text" name="penerbit" class="form-control" id="exampleInputEmail1"
+                                <input type="text" name="publisher" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">tahun terbit</label>
-                                <input type="date" name="tahun_terbit" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input type="date" name="publication_year" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">jumlah halaman</label>
-                                <input type="number" name="jumlah_halaman" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input type="number" name="number_of_pages" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
 
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">sinopsis</label>
-                                <textarea type="text" name="sinopsis" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea type="text" name="summary" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 {{-- <input type="text" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp"> --}}
 
