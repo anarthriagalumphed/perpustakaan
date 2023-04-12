@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Role;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -70,12 +71,14 @@ class User extends Authenticatable
             ]
         ];
     }
+    public function hasRole($role)
+    {
+        return $this->role_id == $role;
+    }
 
 
-
-
-
-
-
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
