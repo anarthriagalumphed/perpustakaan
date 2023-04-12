@@ -22,7 +22,8 @@
                 @endif
                 <label>Code</label>
                 <input type="text" name="book_code" placeholder="insert code" id="code" class="form-control"
-                    value="{{ old('book_code') }}">
+                    value="gmp-{{ old('book_code') }}">
+
                 <label>Title</label>
                 <input type="text" name="title" placeholder="insert title" id="title" class="form-control"
                     value="{{ old('title') }}">

@@ -17,11 +17,14 @@ class OnlyAdmin
     public function handle(Request $request, Closure $next): Response
     {
         // kasih tau apa yang terjadi jika bukan 1
-        if (Auth::user()->role_id != 1) {
-            return redirect('books');
+        if (auth()->check() && auth()->user()->role_id == 1) {
+            return $next($request);
+            return redirect('dashboard');
+        } else {
+            return redirect()->route('book_list')->with('error', 'Anda tidak memiliki akses ke halaman ini, silahkan register atau login terlebih dahulu');
         }
-
-        // jika admin login
-        return $next($request);
     }
+
+    // jika admin login
+
 }

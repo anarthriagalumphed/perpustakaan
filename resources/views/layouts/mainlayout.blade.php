@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Library | @yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
     <link
         href="{{ asset('template/https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-                                                                                                                                                                                                                        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -96,28 +97,29 @@
 
             {{-- <!-- Sidebar --> --}}
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <a href="profile">
-                            <img src="{{ asset('/img/pp fix.png') }}" class="img-circle elevation-2" alt="User Image">
-                        </a>
-
+                @if (auth()->check() &&
+                        auth()->user()->hasRole('1'))
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image">
+                            <a href="profile">
+                                <img src="{{ asset('/img/pp fix.png') }}" class="img-circle elevation-2"
+                                    alt="User Image">
+                            </a>
+                        </div>
+                        <div class="info">
+                            @if (auth()->check())
+                                <a href="profile" class="d-block">{{ Auth()->user()->username }}</a>
+                            @endif
+                        </div>
                     </div>
-                    <div class="info">
-                        <a href="profile" class="d-block">{{ Auth()->user()->username }}</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                {{-- "@if (request()->route()->uri == 'dashboard')  @endif --}}
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                        @if (Auth::user()->role_id == 1)
+                    <!-- SidebarSearch Form -->
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                            data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                            {{-- @if (Auth::user()->role_id == 1) --}}
                             <li class="nav-item">
                                 <a href="/dashboard" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
                                     <i class="nav-icon fas fa-home"></i>
@@ -129,7 +131,8 @@
                             </li>
                             {{-- <li class="nav-header">EXAMPLES</li> --}}
                             <li class="nav-item">
-                                <a href="/books" class="nav-link {{ request()->is('books') ? 'active' : '' }} || {{ request()->is('add_books') ? 'active' : '' }} || {{ request()->is('edit_books') ? 'active' : '' }} || {{ request()->is('delete_books') ? 'active' : '' }} || {{ request()->is('deleted_books') ? 'active' : '' }}">
+                                <a href="/books"
+                                    class="nav-link {{ request()->is('books') ? 'active' : '' }} || {{ request()->is('add_books') ? 'active' : '' }} || {{ request()->is('edit_books') ? 'active' : '' }} || {{ request()->is('delete_books') ? 'active' : '' }} || {{ request()->is('deleted_books') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-swatchbook "></i>
                                     <p>
                                         Books
@@ -169,20 +172,63 @@
                                     </p>
                                 </a>
                             </li>
-                        @else
-                            <li class="nav-item">
-                                <a href="/logout" class="nav-link">
-                                    <i class="nav-icon fas fa-sign-out-alt "></i>
-                                    <p>
-                                        Logout
-                                    </p>
-                                </a>
-                            </li>
-                        @endif
-
-                    </ul>
+                        @elseif (auth()->check() &&
+                                auth()->user()->hasRole('2'))
+                            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                                <div class="image">
+                                    <a href="profile">
+                                        <img src="{{ asset('/img/pp fix.png') }}" class="img-circle elevation-2"
+                                            alt="User Image">
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    @if (auth()->check())
+                                        <a href="profile" class="d-block">{{ Auth()->user()->username }}</a>
+                                    @endif
+                                </div>
+                            </div>
+                            <nav class="mt-2">
+                                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview"
+                                    role="menu" data-accordion="false">
+                                    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                                    {{-- @if (Auth::user()->role_id == 1) --}}
+                                    <li class="nav-item">
+                                        <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }} ">
+                                            <i class="nav-icon fas fa-swatchbook "></i>
+                                            <p>
+                                                Book List
+                                                {{-- <span class="right badge badge-danger">New</span> --}}
+                                            </p>
+                                        </a>
+                                    </li>
+                                    {{-- <li class="nav-header">EXAMPLES</li> --}}
+                                    <li class="nav-item">
+                                        <a href="/logout" class="nav-link ">
+                                            <i class="nav-icon fas fa-sign-out-alt "></i>
+                                            <p>
+                                                Logout
+                                            </p>
+                                        </a>
+                                    </li>
+                                @else
+                                    <nav class="mt-2">
+                                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview"
+                                            role="menu" data-accordion="false">
+                                            <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                                            {{-- @if (Auth::user()->role_id == 1) --}}
+                                            <li class="nav-item">
+                                                <a href="/register"
+                                                    class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
+                                                    <i class="nav-icon fas fa-sign-in-alt"></i>
+                                                    <p>
+                                                        Register
+                                                        {{-- <span class="right badge badge-danger">New</span> --}}
+                                                    </p>
+                                                </a>
+                                            </li>
+                @endif
+                </ul>
                 </nav>
-
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

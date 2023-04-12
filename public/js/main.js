@@ -8,3 +8,8 @@ $('.sidebar-overlay').on('click', function() {
       $('body').removeClass('sidebar-open');
     }
   });
+
+
+  setTimeout(function() {
+    $('.alert').fadeOut('fast');
+}, 3000); // Waktu dalam milisecond

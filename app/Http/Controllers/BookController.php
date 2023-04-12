@@ -41,6 +41,7 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+        $book_code = 'gmp-' . $request->book_code;
         // dd($request->all);
         $validated = $request->validate([
             'book_code' => 'required|unique:books|max:100',
@@ -129,6 +130,5 @@ class BookController extends Controller
         $book = Book::withTrashed()->where('slug', $slug)->first();
         $book->restore();
         return redirect('books')->with('status', 'book restored');
-
     }
 }
