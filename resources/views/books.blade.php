@@ -19,7 +19,7 @@
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
 
-
+                {{-- 
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
@@ -31,9 +31,8 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <a href="add_books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class="fas fa-plus"></i>
+                <br> --}}
+                <a href="add_books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i class="fas fa-plus"></i>
                     Tambah
                     Books</a>
                 <a href="deleted_books" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i

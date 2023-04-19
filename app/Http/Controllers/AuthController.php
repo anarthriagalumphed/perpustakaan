@@ -36,7 +36,7 @@ class AuthController extends Controller
             }
 
             if (Auth::user()->role_id == 2) {
-                return redirect('profile');
+                return redirect('books');
             }
         }
 

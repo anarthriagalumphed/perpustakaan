@@ -33,11 +33,11 @@
                     @if ($book->cover != '')
                         <img src="{{ asset('storage/cover/' . $book->cover) }}" alt="" width="100%">
                     @else
-                        <img src="{{ asset('img/background.jpg') }}" alt="" width="100%">
+                        <img src="{{ asset('img/cover_buku_default.png') }}" alt="" width="100%">
                     @endif
                 </div>
                 <label>Category</label>
-                <select name="categories[]" id="category" class="form-control select-multiple">
+                <select name="categories[]" id="category" class="form-control select2-multiple" multiple="multiple">
 
                     @foreach ($categories as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -71,13 +71,5 @@
             {{-- <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"> Reset</i> </button> --}}
         </form>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
-        <script>
-            $(document).ready(function() {
-                $('.select-multiple').select2();
-            });
-        </script>
     @endsection

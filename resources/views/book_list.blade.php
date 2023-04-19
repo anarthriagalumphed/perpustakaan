@@ -11,10 +11,10 @@
             @foreach ($books as $book)
                 <div class="col col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="card flex-fill">
-                        <img src="{{ $book->cover != null ? asset('storage/cover/' . $book->cover) : asset('img/background.jpg') }}"
+                        <img src="{{ $book->cover != null ? asset('storage/cover/' . $book->cover) : asset('img/cover_buku_default.png') }}"
                             class="card-img-top object-fit-cover" alt="..." draggable="false">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $book->title }}</h5>
+                            <h5 class="card-title font-weight-bold">{{ $book->title }}</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                 the card's content.</p>
                             <p
