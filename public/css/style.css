@@ -39,5 +39,12 @@ a.card-title:hover {
   } 
   
 
+  .select2-container--default .select2-selection--multiple {
+    background-color:#333941 !important;
+  }
 
 
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color:#333941 !important;
+  }
