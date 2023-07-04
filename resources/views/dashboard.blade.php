@@ -57,56 +57,5 @@
 
 
 
-    <div class="card">
-        <div class="card-header">
-
-            {{-- <a>
-                <h3 href="rent_logs" class="card-title">Rent Logs</h3>
-            </a> --}}
-            <a class="card-title " href="rent_logs">Rent Logs</a>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-
-
-                <div class="form-inline">
-                    {{-- <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        {{-- <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div> --}}
-                </div>
-                {{-- <br> --}}
-                {{-- <a href="" class="btn btn-primary btn-sm mb-2"><i class="fas fa-plus"></i></a> --}}
-                <tr>
-                    <th>No.</th>
-                    <th>User</th>
-                    <th>Book Tittle</th>
-                    <th>Rent Date</th>
-                    <th>Return Date</th>
-                    <th>Actual Return Date</th>
-                    <th>Status</th>
-                </tr>
-                <!-- ini perlu diganti data => isi -->
-
-                <!-- ini perlu diganti -->
-                <tbody>
-                    <tr>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <x-rent-log-table :rentlog='$rent_logs' />
 @endsection
