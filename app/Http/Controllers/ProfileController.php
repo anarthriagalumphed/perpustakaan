@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RentLogs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -10,6 +12,8 @@ class ProfileController extends Controller
     {
 
         // dd('ini halaman profile');
-        return view('profile');
+        // Auth::user()->id;
+        $rentlogs = RentLogs::with(['user', 'book'])->where('user_id', Auth::user()->id)->get();
+        return view('profile', ['rent_logs' => $rentlogs]);
     }
 }
