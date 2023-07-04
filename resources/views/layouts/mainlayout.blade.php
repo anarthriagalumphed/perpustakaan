@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
     <link
         href="{{ asset('template/https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -161,6 +161,15 @@
                                     <i class='fas fa-money-bill-wave-alt'></i>
                                     <p>
                                         Book Rent
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/book_return"
+                                    class="nav-link {{ request()->is('book_return') ? 'active' : '' }}">
+                                    <i class='fas fa-arrow-alt-circle-left'></i>
+                                    <p>
+                                        Book Return
                                     </p>
                                 </a>
                             </li>

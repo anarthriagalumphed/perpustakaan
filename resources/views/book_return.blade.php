@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Book Rent')
+@section('title', 'Book Return')
 
 
 @section('content')
@@ -18,11 +18,11 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Book Rent</h3>
+                            <h3 class="card-title">Book Return</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="book_rent" method="POST">
+                        <form action="book_return" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
