@@ -15,7 +15,7 @@
 
         <form action="detail_users" method="post" enctype="multipart/form-data">
             @if ($user->status === 'inactive')
-                <button href="/pprove_users/{{ $user->slug }}" class="btn btn-primary btn-sm mt-5"><i class="fas fa-save">
+                <button href="/approve_users/{{ $user->slug }}" class="btn btn-primary btn-sm mt-5"><i class="fas fa-save">
                         Approve</i> </button>
             @endif
 
@@ -59,8 +59,8 @@
 
             {{-- <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"> Reset</i> </button> --}}
         </form>
-
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <x-rent-log-table :rentlog='$rent_logs' />
+        {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
@@ -68,5 +68,5 @@
             $(document).ready(function() {
                 $('.select-multiple').select2();
             });
-        </script>
+        </script> --}}
     @endsection

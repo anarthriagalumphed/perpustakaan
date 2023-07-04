@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RentLogs;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -26,8 +27,10 @@ class UsersController extends Controller
 
     public function detail_users($slug)
     {
+
         $user = User::where('slug', $slug)->first();
-        return view('detail_users', ['user' => $user]);
+        $rentlogs = RentLogs::with(['user', 'book'])->where('user_id', $user->id)->get();
+        return view('detail_users', ['user' => $user, 'rent_logs' => $rentlogs]);
     }
 
 
