@@ -48,3 +48,14 @@ a.card-title:hover {
   .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color:#333941 !important;
   }
+
+
+  .select2-container--default .select2-selection--single {
+    background-color:#333941 !important;
+
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #fff !important;
+    line-height: 20px !important;
+}
