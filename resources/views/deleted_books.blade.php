@@ -44,6 +44,7 @@
                     <th>No.</th>
                     <th>Code</th>
                     <th>Title</th>
+                    <th>Action</th>
 
                 </tr>
 
@@ -55,11 +56,10 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->book_code }}</td>
+                            <td>{{ $item->title }}</td>
                             <td>
                                 <a href="restore_books/{{ $item->slug }}" class="btn btn-success btn-sm"><i
                                         class="fas fa-trash-restore"></i></a>
-
-
                             </td>
                         </tr>
                     @endforeach

@@ -6,7 +6,8 @@
 
 @section('content')
 
-    <h1>yakin? {{ $book->title }} </h1>
+    <h1>Are you sure to delete this book? <strong>{{ $book->title }}</strong></h1>
+
     <div class="mt-5">
 
         <a href="/destroy_books/{{ $book->slug }}" class="btn btn-danger">Sure</a>

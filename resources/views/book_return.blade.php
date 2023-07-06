@@ -1,65 +1,83 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Book Return')
+@section('title', 'Books')
 
 
 @section('content')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    @if (session('message'))
-        <div class="alert {{ session('alert-class') }}">
-            {{ session('message') }}
+
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
         </div>
     @endif
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-md-3">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Book Return</h3>
+    <div class="card card-primary">
+        <div class="card-header">
+
+            <h3 class="card-title">@yield('title')</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+
+                {{-- 
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="book_return" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="inputuser">User</label>
-                                    <select name="user_id" type="user" class="form-control userbox" id="inputuser"
-                                        placeholder="Enter User">
-                                        <option value="">Select User</option>
-                                        @foreach ($users as $item)
-                                            <option value="{{ $item->id }}"> {{ $item->username }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputbook">Book</label>
-                                    <select name="book_id" type="book" class="form-control select2-multiple"
-                                        multiple="multiple" id="inputbook" placeholder="Enter Book Title">
-                                        <option value="">Select Book</option>
-                                        @foreach ($books as $item)
-                                            <option value="{{ $item->id }}">{{ $item->book_code }} | {{ $item->title }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                            </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
                     </div>
-                    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-                    <script>
-                        $(document).ready(function() {
-                            $('.userbox').select2();
-                        });
-                    </script>
-                @endsection
+                </div>
+                <br> --}}
+                <a href="add_books" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i class="fas fa-plus"></i>
+                    Tambah
+                    Books</a>
+                <a href="deleted_books" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
+                        class="fas fa-history"></i>
+                    View Deleted
+                    Data</a>
+                <br>
+                <tr>
+                    <th>No.</th>
+                    <th>Code</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                <!-- ini perlu diganti data => isi -->
+
+                <!-- ini perlu diganti -->
+                <tbody>
+                    @foreach ($books as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->book_code }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>
+                                @foreach ($item->categories as $category)
+                                    {{ $category->name }}<br>
+                                @endforeach
+                            </td>
+                            <td>{{ $item->status }}</td>
+                            <td>
+                                <a href="/edit_books/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
+                                        class="fas fa-edit"></i></a>
+                                <a href="/delete_books/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
+                                        class="fas fa-trash"></i></a>
+
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+@endsection
