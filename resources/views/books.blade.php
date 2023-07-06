@@ -65,10 +65,10 @@
                             </td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a href="/edit_books/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
+                                <a href="/edit_books/{{ $item->slug }}" class="btn btn-warning btn-sm"title="edit book"><i
                                         class="fas fa-edit"></i></a>
-                                <a href="/delete_books/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="/delete_books/{{ $item->slug }}" class="btn btn-danger btn-sm"
+                                    title="delete book"><i class="fas fa-trash"></i></a>
 
                             </td>
                         </tr>

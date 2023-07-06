@@ -56,10 +56,10 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
-                                <a href="edit_category/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
-                                        class="fas fa-edit"></i></a>
-                                <a href="delete_category/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="edit_category/{{ $item->slug }}" class="btn btn-warning btn-sm"
+                                    title="edit categorie"><i class="fas fa-edit"></i></a>
+                                <a href="delete_category/{{ $item->slug }}" class="btn btn-danger btn-sm"
+                                    title="delete categorie"><i class="fas fa-trash"></i></a>
 
                             </td>
                         </tr>
