@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Library | @yield('title')</title>
-
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_jadi.png') }}">
     <!-- Google Font: Source Sans Pro -->
 
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
     <link
         href="{{ asset('template/https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -121,7 +121,8 @@
                             <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                             {{-- @if (Auth::user()->role_id == 1) --}}
                             <li class="nav-item">
-                                <a href="/dashboard" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
+                                <a href="/dashboard"
+                                    class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
                                     <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Dashboard
@@ -157,7 +158,26 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/rent_logs" class="nav-link {{ request()->is('rent_logs') ? 'active' : '' }}">
+                                <a href="/book_rent"
+                                    class="nav-link {{ request()->is('book_rent') ? 'active' : '' }}">
+                                    <i class='fas fa-money-bill-wave-alt '></i>
+                                    <p>
+                                        Book Rent
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/book_return"
+                                    class="nav-link {{ request()->is('book_return') ? 'active' : '' }}">
+                                    <i class='fas fa-arrow-alt-circle-left '></i>
+                                    <p>
+                                        Book Return
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/rent_logs"
+                                    class="nav-link {{ request()->is('rent_logs') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-business-time "></i>
                                     <p>
                                         Rent Logs
@@ -301,7 +321,7 @@
         <!-- Main Footer -->
         <footer class="main-footer" style="font-size: 0.8rem;">
             <strong>Copyright &copy; 2023 <a
-                    href="mailto:galihmahendrastudio.mp@gmail.com">galihmahendrastudio.co</a>.</strong>
+                    href="mailto:galihmahendrastudio.mp@gmail.com">galihmahendrastudio.com</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 {{-- <b>Version</b> 3.2.0 --}}
