@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <div class="card">
+    <div class="card card-primary">
         <div class="card-header">
 
             <h3 class="card-title">@yield('title')</h3>
@@ -46,7 +46,7 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th>Status</th>
-
+                    <th>Action</th>
                 </tr>
 
                 <!-- ini perlu diganti data => isi -->

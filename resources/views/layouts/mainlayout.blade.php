@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Library | @yield('title')</title>
-
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_jadi.png') }}">
     <!-- Google Font: Source Sans Pro -->
 
     <link rel="stylesheet"
@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
     <link
         href="{{ asset('template/https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+                    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous') }}">
+
+    <link rel="stylesheet" href="{{ gitasset('css/style.css') }}">
 </head>
 
 
@@ -158,12 +159,17 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/book_rent" class="nav-link {{ request()->is('book_rent') ? 'active' : '' }}">
-                                    <i class='fas fa-money-bill-wave-alt '></i>
-                                    <p>
-                                        Book Rent
-                                    </p>
-                                </a>
+                                <<<<<<< HEAD <a href="/book_rent"
+                                    class="nav-link {{ request()->is('book_rent') ? 'active' : '' }}">
+                                    =======
+                                    <a href="/book_rent"
+                                        class="nav-link {{ request()->is('book_rent') ? 'active' : '' }}">
+                                        >>>>>>> c8d07374266c1f0acb712872ccaea2b34ea05c08
+                                        <i class='fas fa-money-bill-wave-alt '></i>
+                                        <p>
+                                            Book Rent
+                                        </p>
+                                    </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/book_return"

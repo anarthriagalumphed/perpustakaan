@@ -16,7 +16,7 @@
                 <!-- left column -->
                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-md-3">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-white">
                         <div class="card-header">
                             <h3 class="card-title">Book Rent</h3>
                         </div>

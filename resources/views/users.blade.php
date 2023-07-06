@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <div class="card">
+    <div class="card card-warning">
         <div class="card-header">
 
             <h3 class="card-title">@yield('title')</h3>
@@ -18,7 +18,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -28,11 +28,10 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <br>
-                <a href="/deleted_users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i
-                        class=""></i>
-                    Banned</a>
+                <a href="/deleted_users" class="btn btn-primary btn-sm mb-2" style="margin-right: 10px;"><i class=""></i>
+                    View Banned Users</a>
                 {{-- <a href="/registered_users" class="btn btn-warning btn-sm mb-2" style="margin-right: 10px;"><i
                         class="fas fa-history"></i>
                     View Registered
@@ -42,7 +41,7 @@
                     <th>No.</th>
                     <th>Username</th>
                     <th>Phone</th>
-
+                    <th>Action</th>
                 </tr>
 
                 <!-- ini perlu diganti data => isi -->
