@@ -88,4 +88,28 @@ class BookRentController extends Controller
             return redirect('book_return');
         }
     }
+
+    public function selectState(Request $request)
+{
+    $books = [];
+    $userID = $request->userID;
+
+    if ($request->has('q')) {
+        $search = $request->q;
+        $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
+            ->join('books', 'rent_logs.book_id', '=', 'books.id')
+            ->where('rent_logs.user_id', $userID)
+            ->where('books.title', 'LIKE', "%$search%")
+            ->get();
+    } else {
+        $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
+            ->join('books', 'rent_logs.book_id', '=', 'books.id')
+            ->where('rent_logs.user_id', $userID)
+            ->limit(10)
+            ->get();
+    }
+
+    return response()->json($books);
+}
+
 }

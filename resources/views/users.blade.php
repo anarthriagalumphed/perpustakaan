@@ -63,10 +63,10 @@
 
                             </td>
                             <td>
-                                <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"
-                                    title="user detail"><i class="	fas fa-address-card"></i></a>
-                                <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm" title="ban user"><i
-                                        class="fas fa-trash"></i></a>
+                                <a href="detail_users/{{ $item->slug }}" class="btn btn-warning btn-sm"><i
+                                        title="view detail user"class="	fas fa-address-card"></i></a>
+                                <a href="delete_users/{{ $item->slug }}" class="btn btn-danger btn-sm"><i
+                                        title="ban user"class="fas fa-trash"></i></a>
 
                             </td>
                         </tr>

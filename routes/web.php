@@ -90,6 +90,7 @@ Route::middleware('auth')->group(function () {
         Route::get('book_return', [BookRentController::class, 'book_return']);
         Route::post('book_return', [BookRentController::class, 'returning']);
 
+        Route::get('/admin/select-state', [BookRentController::class, 'selectState'])->name('admin.selectState');
 
 
 
