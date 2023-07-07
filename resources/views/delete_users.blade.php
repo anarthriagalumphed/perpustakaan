@@ -1,17 +1,17 @@
 @extends('layouts.mainlayout')
 
 
-@section('title', 'Delete Category')
+@section('title', 'Delete Users')
 
 
 @section('content')
 
 
-    <h1>Are you sure to delete this book? <strong>{{ $category->name }}</strong></h1>
+    <h1>Are you sure to ban this user? <strong>{{ $user->username }}</strong></h1>
     <div class="mt-5">
 
-        <a href="/destroy_category/{{ $category->slug }}" class="btn btn-danger">Sure</a>
-        <a href="/categories" class="btn btn-primary">Cancel</a>
+        <a href="/destroy_users/{{ $user->slug }}" class="btn btn-danger">Sure</a>
+        <a href="/users" class="btn btn-primary">Cancel</a>
     </div>
 
 @endsection
