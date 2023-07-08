@@ -1,4 +1,4 @@
-<div class="card card-danger">
+<div class="card card-danger" onclick="window.location='{{ route('rent_logs') }}'">
     <div class="card-header">
 
         <h3 class="card-title">Rent Logs</h3>

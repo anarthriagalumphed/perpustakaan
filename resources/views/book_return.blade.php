@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-md-3">
+                <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     <!-- general form elements -->
                     <div class="card card-info">
                         <div class="card-header">
@@ -23,36 +23,43 @@
                         <!-- form start -->
                         <form action="book_return" method="POST">
                             @csrf
-                            <div class="form-group">
-                                <label for="inputuser">User</label>
-                                <select name="user_id" type="user" class="form-control userbox" id="inputuser"
-                                    placeholder="Enter User">
-                                    <option value="" disabled selected>Select User</option>
-                                    @foreach ($users as $item)
-                                        @if ($item->role_id != 1)
-                                            <option value="{{ $item->id }}">{{ $item->username }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputuser">User</label>
+                                    <select name="user_id" type="user" class="form-control userbox" id="inputuser"
+                                        placeholder="Enter User">
+                                        <option value="" disabled selected>Select User</option>
+                                        @foreach ($users as $user)
+                                            @php
+                                                $userBooks = $user
+                                                    ->rentLogs()
+                                                    ->whereNull('actual_return_date')
+                                                    ->pluck('book_id')
+                                                    ->toArray();
+                                            @endphp
+                                            @if ($user->role_id != 1 && count($userBooks) > 0)
+                                                <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputbook">Book</label>
+                                    <select name="book_id" type="book" class="form-control select2-multiple"
+                                        multiple="multiple" id="inputbook" placeholder="Enter Book Title">
+                                        <option value="" disabled>Select Book</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputbook">Book</label>
-                                <select name="book_id" type="book" class="form-control select2-multiple"
-                                    multiple="multiple" id="inputbook" placeholder="Enter Book Title">
-                                    <option value="" disabled>Select Book</option>
-                                </select>
-                            </div>
+                            <!-- /.card-body -->
+
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
+                        </form>
                     </div>
-                    <!-- /.card-body -->
-
-
-                    </form>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 

@@ -16,9 +16,10 @@ class BookRentController extends Controller
     public function book_rent()
     {
         $users = User::where('id', '!=', 1)->get();
-        $books = Book::all();
+        $books = Book::where('status', 'in stock')->get();
         return view('book_rent', ['users' => $users, 'books' => $books]);
     }
+
 
     public function store(Request $request)
     {
@@ -90,26 +91,27 @@ class BookRentController extends Controller
     }
 
     public function selectState(Request $request)
-{
-    $books = [];
-    $userID = $request->userID;
+    {
+        $books = [];
+        $userID = $request->userID;
 
-    if ($request->has('q')) {
-        $search = $request->q;
-        $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
-            ->join('books', 'rent_logs.book_id', '=', 'books.id')
-            ->where('rent_logs.user_id', $userID)
-            ->where('books.title', 'LIKE', "%$search%")
-            ->get();
-    } else {
-        $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
-            ->join('books', 'rent_logs.book_id', '=', 'books.id')
-            ->where('rent_logs.user_id', $userID)
-            ->limit(10)
-            ->get();
+        if ($request->has('q')) {
+            $search = $request->q;
+            $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
+                ->join('books', 'rent_logs.book_id', '=', 'books.id')
+                ->where('rent_logs.user_id', $userID)
+                ->where('books.title', 'LIKE', "%$search%")
+                ->whereNull('rent_logs.actual_return_date') // Menambahkan kondisi untuk memeriksa buku yang sedang dipinjam
+                ->get();
+        } else {
+            $books = RentLogs::select('books.id', 'books.title', 'books.book_code')
+                ->join('books', 'rent_logs.book_id', '=', 'books.id')
+                ->where('rent_logs.user_id', $userID)
+                ->whereNull('rent_logs.actual_return_date') // Menambahkan kondisi untuk memeriksa buku yang sedang dipinjam
+                ->limit(10)
+                ->get();
+        }
+
+        return response()->json($books);
     }
-
-    return response()->json($books);
-}
-
 }
