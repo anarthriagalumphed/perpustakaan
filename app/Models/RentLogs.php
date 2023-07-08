@@ -12,7 +12,6 @@ class RentLogs extends Model
 
     protected $table = 'rent_logs';
 
-
     protected $fillable = [
         'user_id', 'book_id', 'rent_date', 'return_date'
     ];

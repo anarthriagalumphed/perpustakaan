@@ -95,7 +95,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-        Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs']);
+        Route::get('rent_logs', [Rent_LogsController::class, 'rent_logs'])->name('rent_logs');
     });
 });
 
